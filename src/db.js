@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import config from './config';
 export default callback => {
-  let db = mongoose.connect(config.mongoUrl);
+  let db = mongoose.connect(config.mongoUrl, {
+    // Remove deprecated issue
+    "useMongoClient": true
+  });
   callback(db);
 }
